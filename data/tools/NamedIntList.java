@@ -12,6 +12,11 @@ public class NamedIntList extends IntList{
         this.name = name;
     }
 
+    public NamedIntList(String name) {
+        super(new int[] {});
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         String out = super.toString() + " - " + name;

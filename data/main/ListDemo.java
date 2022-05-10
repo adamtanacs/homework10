@@ -99,7 +99,7 @@ public class ListDemo {
         testNamedList.concat(testNamedIntListConcat);
         System.out.println(testNamedList.toString());
 
-        NamedIntList testNamedListFromIntList = new NamedIntList("testNamedListFromIntList", new int[] {});
-        System.out.println(testNamedListFromIntList.toString());
+        NamedIntList testNamedIntListWithOnlyName = new NamedIntList("testNamedIntListWithOnlyName");
+        System.out.println(testNamedIntListWithOnlyName.toString());
     }
 }
