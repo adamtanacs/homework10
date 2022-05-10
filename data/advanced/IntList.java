@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class IntList {
     private int actualSize;
-    private int maxSize;
     private ArrayList<Integer> list;
 
     public IntList(int[] list) {
