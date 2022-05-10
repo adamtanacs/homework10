@@ -1,11 +1,16 @@
 package data.tools;
 
-import java.util.ArrayList;
-
-public class IntListBasic{
+public class IntListBasic {
     private int actualSize;
     private int maxSize;
     private int[] list;
+
+    private int pushAllElementsBack(int index,int limit) {
+        for(int i = index; i < actualSize; i++) {
+            list[i] = list [i+1];
+        }
+        return 0;
+    }
 
     public IntListBasic(int maxSize) {
         this.maxSize = maxSize;
@@ -18,16 +23,27 @@ public class IntListBasic{
             list[actualSize] = number;
             actualSize++;
         } else {
-            throw new IllegalArgumentException("IntListBasic is full!");
+            throw new IllegalStateException("IntListBasic is full!");
         }
     }
 
     public void concat(IntListBasic other) {
-        for (int numbers : list) {
-
+        if (other.actualSize + actualSize <= maxSize) {
+            int j = 0;
+            int i = actualSize;
+            int tmp = other.actualSize;
+            while(i < maxSize && j < tmp) {
+                list[i] = other.list[j];
+                i++;
+                j++;
+                actualSize++;
+            }
+        } else {
+            throw new IllegalStateException("Exceeding max size of IntListBasic!");
         }
     }
 
+    @Override
     public String toString() {
         if (actualSize == 0) {
             return "empty";
@@ -36,7 +52,7 @@ public class IntListBasic{
             int i = 0;
             for (int numbers : list) {
                 if (actualSize > i) {
-                    String tmp = (i < actualSize-1) ? (numbers + ",") : (numbers + "");
+                    String tmp = (i < actualSize - 1) ? (numbers + ",") : (numbers + "");
                     output.append(tmp);
                     i++;
                 }
@@ -45,11 +61,13 @@ public class IntListBasic{
         }
     }
 
-    public void removeItemsGreaterThan(int limit) 
-    {
-        for (int numbers : list) {
-            
+    public void removeItemsGreaterThan(int limit) {
+        for (int i = 0; i < actualSize;i++) {
+            if (list[i] > limit) {
+                pushAllElementsBack(i,limit);
+                i--;
+                actualSize--;
+            }
         }
-
     }
 }
