@@ -62,6 +62,8 @@ public class IntList {
     }
 
     public ArrayList<Integer> getData() {
-        return new ArrayList<Integer>(list);
+        ArrayList<Integer> output = new ArrayList<Integer>();
+        output = list;
+        return output;
     }
 }

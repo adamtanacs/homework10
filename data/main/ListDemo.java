@@ -3,6 +3,8 @@ import data.tools.IntListBasic;
 import data.tools.NamedIntList;
 import data.advanced.IntList;
 
+import java.util.ArrayList;
+
 public class ListDemo {
     public static void main(String[] args) {
         IntListBasic testIntListBasic = new IntListBasic(10);
@@ -48,6 +50,8 @@ public class ListDemo {
             System.out.println(e);
         }
 
+
+
         IntList testIntList = new IntList(new int[] {});
         System.out.println(testIntList.toString());
 
@@ -72,7 +76,10 @@ public class ListDemo {
         System.out.println(testIntList.toString());
 
         IntList testIntListFromIntList = new IntList(new int[] {7,2,13});
-        System.out.println(testIntListFromIntList);
+        System.out.println(testIntListFromIntList.toString());
+
+        ArrayList<Integer> testGetData = testIntList.getData();
+        System.out.println(testGetData);
 
         NamedIntList testNamedList = new NamedIntList("TestNameList", new int[] {});
         System.out.println(testNamedList.toString());
